@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Practice from "./Practice";
 import "./styles.css";
 
 export default function App() {
@@ -72,6 +73,8 @@ export default function App() {
       />
       <br />
       <button>Submit</button>
+      <hr />
+      <Practice />
     </div>
   );
 }
