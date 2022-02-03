@@ -9,19 +9,23 @@ export default function App() {
   });
 
   function handleChange(event) {
-    const newValue = event.target.value;
-    const inputName = event.target.name;
+    // const newValue = event.target.value;
+    // const inputName = event.target.name;
+
+    //value=newValue
+    //name=inputName
+    const { value, name } = event.target;
 
     setFullname((prevValue) => {
-      if (inputName === "fname") {
+      if (name === "fname") {
         return {
-          fname: newValue,
+          fname: value,
           lname: prevValue.lname
         };
-      } else if (inputName === "lname") {
+      } else if (name === "lname") {
         return {
           fname: prevValue.fname,
-          lname: newValue
+          lname: value
         };
       }
     });
