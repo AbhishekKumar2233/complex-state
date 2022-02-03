@@ -2,35 +2,69 @@ import { useState } from "react";
 import "./styles.css";
 
 export default function App() {
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
+  //method2
+  const [Fullname, setFullname] = useState({
+    fname: "",
+    lname: ""
+  });
 
-  function updatefname(event) {
-    const fisrtname = event.target.value;
-    setFname(fisrtname);
+  function handleChange(event) {
+    const newValue = event.target.value;
+    const inputName = event.target.name;
+
+    setFullname((prevValue) => {
+      if (inputName === "fname") {
+        return {
+          fname: newValue,
+          lname: prevValue.lname
+        };
+      } else if (inputName === "lname") {
+        return {
+          fname: prevValue.fname,
+          lname: newValue
+        };
+      }
+    });
+    // if (inputName === "fname") {
+    //   setFullname({ fname: newValue });
+    // } else {
+    //   setFullname({ lname: newValue });
+    // }
+    // inputName === "fname"
+    //   ? setFullname({ fname: newValue })
+    //   : setFullname({ lname: newValue });
   }
-  function updatelname(event) {
-    const lastname = event.target.value;
-    setLname(lastname);
-  }
+
+  //method1
+  // const [fname, setFname] = useState("");
+  // const [lname, setLname] = useState("");
+
+  // function updatefname(event) {
+  //   const fisrtname = event.target.value;
+  //   setFname(fisrtname);
+  // }
+  // function updatelname(event) {
+  //   const lastname = event.target.value;
+  //   setLname(lastname);
+  // }
 
   return (
     <div className="App">
       <h1>
-        Hello {fname} {lname}
+        Hello {Fullname.fname} {Fullname.lname}
       </h1>
       <input
-        onChange={updatefname}
+        onChange={handleChange}
         name="fname"
         placeholder="First Name"
-        value={fname}
+        value={Fullname.fname}
       />
       <br />
       <input
-        onChange={updatelname}
+        onChange={handleChange}
         name="lname"
         placeholder="Last Name"
-        value={lname}
+        value={Fullname.lname}
       />
       <br />
       <button>Submit</button>
