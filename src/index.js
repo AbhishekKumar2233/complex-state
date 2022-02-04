@@ -10,3 +10,8 @@ ReactDOM.render(
   </StrictMode>,
   rootElement
 );
+
+const citrus = ["Lime", "Lemon", "Orange"];
+const fruits = ["Apple", "Banana", "Orange", "Coconut", ...citrus];
+// ...citrus is spread operator
+console.log(fruits);
