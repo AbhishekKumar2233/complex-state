@@ -18,17 +18,22 @@ export default function App() {
     const { value, name } = event.target;
 
     setFullname((prevValue) => {
-      if (name === "fname") {
-        return {
-          fname: value,
-          lname: prevValue.lname
-        };
-      } else if (name === "lname") {
-        return {
-          fname: prevValue.fname,
-          lname: value
-        };
-      }
+      return {
+        ...prevValue,
+        [name]: value
+        //
+      };
+      // if (name === "fname") {
+      //   return {
+      //     fname: value,
+      //     lname: prevValue.lname
+      //   };
+      // } else if (name === "lname") {
+      //   return {
+      //     fname: prevValue.fname,
+      //     lname: value
+      //   };
+      // }
     });
     // if (inputName === "fname") {
     //   setFullname({ fname: newValue });
